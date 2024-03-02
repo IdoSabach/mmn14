@@ -98,4 +98,30 @@ public class ex14 {
         return false;
 
     }
+
+public boolean subListSum(int num){
+        if(_head == null) {
+            return false;
+        }
+        int sum = 0;
+        IntNode subListHead = _head;
+        IntNode subListTail = _head;
+
+        while (sum != num && subListTail != null) {
+            sum += subListTail.getValue();
+            if (sum == num){
+                return true;
+            }
+            else if (sum > num) {
+                sum -= subListHead.getValue();
+                subListHead = subListHead.getNext();
+            }
+            subListTail = subListTail.getNext();
+        }
+        if (sum == num)
+            return true;
+        return false; 
+
+    }
+
 }
